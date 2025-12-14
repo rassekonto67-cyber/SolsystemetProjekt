@@ -1,1 +1,5 @@
 # SolsystemetProjekt
+
+HTML
+CSS
+JAVASCRIPT
