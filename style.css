@@ -1,0 +1,217 @@
+/* global style.. */
+body {
+    margin: 0;
+    background: linear-gradient(90deg, #0e0a27, #001859);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+.header {
+    text-align: right;
+    padding: 40px 60px 20px 20px;
+}
+
+.titlename {
+    color: #f2c94c;
+    letter-spacing: 4px;
+    margin-top: -10px;
+}
+
+/* solarsystem */
+.solar-container {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    padding-left: 80px;
+
+    /* Make layout adapt */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sun {
+    width: clamp(150px, 25vw, 300px);
+    height: clamp(150px, 25vw, 300px);
+    background: #ffcf23;
+    border-radius: 50%;
+    margin-right: 40px;
+}
+
+.planets {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap; /* Prevent overflow */
+}
+
+.planet {
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.planet:hover {
+    transform: scale(1.2);
+}
+
+/* Planet sizes become responsive using clamp, first time im using syntax "clamp" */
+.mercury { width: clamp(10px, 1.5vw, 15px); height: clamp(10px, 1.5vw, 15px); background: #a3a087; }
+.venus   { width: clamp(15px, 2vw, 22px); height: clamp(15px, 2vw, 22px); background: #f5d6c6; }
+.earth   { width: clamp(18px, 2.2vw, 25px); height: clamp(18px, 2.2vw, 25px); background: #4fa6ef; }
+.mars    { width: clamp(12px, 1.8vw, 18px); height: clamp(12px, 1.8vw, 18px); background: #e45b4f; }
+
+.jupiter { width: clamp(80px, 15vw, 150px); height: clamp(80px, 15vw, 150px); background: #e29a6c; }
+
+.saturn { 
+    width: clamp(60px, 12vw, 100px);
+    height: clamp(60px, 12vw, 100px);
+    background: #d5b46a; 
+    position: relative;
+}
+.saturn .ring {
+    width: clamp(100px, 20vw, 160px);
+    height: clamp(3px, 0.4vw, 4px);
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    transform: rotate(-10deg);
+}
+
+.uranus  { width: clamp(25px, 4vw, 40px); height: clamp(25px, 4vw, 40px); background: #dce5ff; }
+.neptune { width: clamp(30px, 5vw, 50px); height: clamp(30px, 5vw, 50px); background: #7a94a8; }
+
+/* Overlay */
+.planet-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    color: white;
+    background: linear-gradient(90deg, #0a1636, #020b27);
+    z-index: 999;
+    overflow-y: auto;  
+    animation: fadeIn 0.3s ease;
+
+    /* Responsive layout */
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Left panel */
+.overlay-left {
+    width: 35%;
+    min-width: 350px;
+    flex-grow: 1;
+    background: radial-gradient(circle at left, #4ea0dd 0%, #1a3d72 60%, transparent 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planet-circle {
+    width: clamp(180px, 30vw, 320px);
+    height: clamp(180px, 30vw, 320px);
+    border-radius: 50%;
+    background: lightblue;
+}
+
+/* Right panel */
+.overlay-right {
+    width: 65%;
+    flex-grow: 1;
+    padding: clamp(40px, 8vw, 120px) clamp(30px, 6vw, 100px);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: clamp(20px, 3vw, 28px);
+    cursor: pointer;
+}
+
+.overlay-right h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    margin: 0;
+    letter-spacing: 4px;
+}
+
+.overlay-right h3 {
+    color: #f2c94c;
+    letter-spacing: clamp(3px, 1vw, 8px);
+}
+
+.overlay-right p {
+    line-height: 1.8;
+    max-width: 600px;
+    font-size: clamp(14px, 1.5vw, 18px);
+}
+
+/* Info grid */
+.info-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+}
+
+.info-grid h4 {
+    font-size: clamp(10px, 1vw, 12px);
+    letter-spacing: 2px;
+    color: #ccc;
+}
+
+
+
+/* Media Queries */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .solar-container {
+        padding-left: 20px;
+        text-align: center;
+    }
+
+    .overlay-overlay {
+        flex-direction: column;
+    }
+
+    .overlay-left,
+    .overlay-right {
+        width: 100%;
+        padding: 40px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .planets {
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .overlay-right {
+        padding: 40px 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .close-btn {
+        right: 15px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

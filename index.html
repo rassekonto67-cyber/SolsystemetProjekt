@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solsystem</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+<section class="header">
+<h1 class="title">SOLSYSTEMET</h1>
+<h2 class="titlename">Solaris</h2>
+</section>
+<!-- Solar System, OBS.. im using "planet" as a class for the sun so i don't have to make a whole new class for it and im also using the planets as divs because they are supposed to be only clickable  -->
+<div class="solar-container">
+    <div class="planet sun" data-planet="solen"></div>
+
+    <div class="planets">
+        <div class="planet mercury" data-planet="merkurius"></div>
+        <div class="planet venus" data-planet="venus"></div>
+        <div class="planet earth" data-planet="jorden"></div>
+        <div class="planet mars" data-planet="mars"></div>
+        <div class="planet jupiter" data-planet="jupiter"></div>
+
+        <div class="planet saturn" data-planet="saturnus">
+            <div class="ring"></div>
+        </div>
+
+        <div class="planet uranus" data-planet="uranus"></div>
+        <div class="planet neptune" data-planet="neptunus"></div>
+        
+    </div>
+</div>
+
+<!-- Overlay for the planets -->
+<div id="planetOverlay" class="planet-overlay hidden">
+    <div class="overlay-left">
+        <div class="planet-circle"></div>
+    </div>
+
+    <div class="overlay-right">
+        <button id="closeOverlay" class="close-btn">✕</button>
+
+        <h1 id="ov-name">PLANET</h1>
+        <h3 id="ov-latin">LATINSKT NAMN</h3>
+
+        <p id="ov-description"></p>
+
+        <div class="info-grid">
+            <div>
+                <h4>OMKRETS</h4>
+                <p id="ov-circumference"></p>
+            </div>
+
+            <div>
+                <h4>KM FRÅN SOLEN</h4>
+                <p id="ov-distance"></p>
+            </div>
+
+            <div>
+                <h4>MAX TEMPERATUR</h4>
+                <p id="ov-temp-max"></p>
+            </div>
+
+            <div>
+                <h4>MIN TEMPERATUR</h4>
+                <p id="ov-temp-min"></p>
+            </div>
+        </div>
+
+        <div class="moon-section">
+            <h4>MÅNAR</h4>
+            <p id="ov-moons"></p>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
