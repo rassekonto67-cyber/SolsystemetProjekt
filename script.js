@@ -11,11 +11,6 @@ const maxTempEl = document.getElementById("ov-temp-max");
 const minTempEl = document.getElementById("ov-temp-min");
 const moonsEl = document.getElementById("ov-moons");
 
-// Fetch count for the simulated error, every 5th fetch it throws an alert error in the getPlanetData function.
-// let fetchCount = 0;
-
-
-
 
 //The API key gets fetched from file server.json and is not hardcoded in the script, it gets dynamically loaded
 async function getApiKey() {
@@ -39,18 +34,8 @@ async function getApiKey() {
 }
 
 
-
 //https://corsproxy.io/? was tested with the URL for the API, when the CORS error occured.
 async function getPlanetData(planetName) {
-// fetchCount++;
-
-// Every 5th fetch, simulate an error and a alert box will appear for the user saying "Can't find the planet right now, try again later."
-    // if (fetchCount % 5 === 0) {
-    //     alert("Can't find the planet right now, try again later.");
-
-    //     throw new Error("Simulated API error (every 5th fetch)");
-    // } else {
-
 
     const apiKey = await getApiKey();
 //fetching planet data from the API using /bodies endpoint. x-zocom needed for authentication with the API key.
@@ -77,7 +62,7 @@ async function getPlanetData(planetName) {
     );
     
 }
-//}
+
 
 
 // Open overlay on planet click, the overlay is hidden by default so when a planet is clicked, it fetches the data and fills the overlay with the relevant information.
